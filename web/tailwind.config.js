@@ -7,10 +7,17 @@ module.exports = {
     extend: {
       colors: {
         brand: {
-          500: '#8257E5'
+          500: '#8257E5',
+          300: '#996DFF'
         }
       }
+    },
+
+    fontFamily: {
+      sans: ['Inter', 'sans-serif']
     }
   },
-  plugins: []
+  plugins: [
+    require('tailwind-scrollbar')
+  ]
 };
