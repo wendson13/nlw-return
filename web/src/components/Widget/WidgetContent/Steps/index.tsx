@@ -1,6 +1,7 @@
 import { ArrowLeft } from 'phosphor-react';
 import { FormEvent, useState } from 'react';
 import { ContentOptionsKeyType, ContentOptions } from '..';
+import { api } from '../../../../lib/api';
 import { Loading } from '../../../Loading';
 import { ScreenshotButton } from '../../../ScreenshotButton';
 import { CloseButton } from '../../CloseButton';
@@ -11,7 +12,7 @@ type StepProps = {
   onSendFeedback: (isSending: boolean) => void;
 }
 
-export function Steps ({ currentStep, onToBack, onSendFeedback }: StepProps) {
+export function Steps({ currentStep, onToBack, onSendFeedback }: StepProps) {
   const step = ContentOptions[currentStep];
   const [feedback, setFeedback] = useState('');
   const [screenshot, setScreenshot] = useState('');
@@ -24,9 +25,9 @@ export function Steps ({ currentStep, onToBack, onSendFeedback }: StepProps) {
 
     setIsSubmittingFeedback(true);
 
-    await new Promise(resolve => setTimeout(() => resolve(''), 500));
-    console.log({
-      feedback,
+    await api.post('feedbacks', {
+      type: currentStep,
+      comment: feedback,
       screenshot
     });
 
@@ -66,7 +67,7 @@ export function Steps ({ currentStep, onToBack, onSendFeedback }: StepProps) {
           {
             currentStep === 'BUG' &&
             <ScreenshotButton
-              isEnable={feedback.trim().length === 0}
+              isEnable={feedback.trim().length === 0 || isSubmittingFeedback}
               onTakeScreenshot={setScreenshot}
               screenshot={screenshot}
             />
@@ -75,7 +76,7 @@ export function Steps ({ currentStep, onToBack, onSendFeedback }: StepProps) {
             className="w-full flex justify-center py-2 rounded text-sm leading-6 text-white font-medium bg-brand-500 transition-colors outline-none disabled:opacity-40 hover:bg-brand-300 disabled:hover:bg-brand-500 ring-brand-500 ring-offset-zinc-900 ring-offset-2 focus:ring-2"
             disabled={feedback.trim().length === 0}
             type="submit">
-              {isSubmittingFeedback ? <Loading /> : 'Send feedback'}
+            {isSubmittingFeedback ? <Loading /> : 'Send feedback'}
           </button>
         </div>
       </form>
