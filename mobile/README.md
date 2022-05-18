@@ -1,6 +1,6 @@
 # NLW Return - Mobile
 
-![Cover](.github/cover.jpg)
+<img src=".github/cover.jpg" width="30%" />
 
 ## 💻 Projeto
 
