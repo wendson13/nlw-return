@@ -1,41 +1,28 @@
 import { useState } from 'react';
 import { Switch } from '@headlessui/react';
 import { Moon, Sun } from 'phosphor-react';
-
-type Theme = 'dark' | 'light'
+import { useTheme } from '../context/Theme';
 
 type SwitchThemeProps = {
   className?: string;
 }
 
 export function SwitchTheme({ className }: SwitchThemeProps) {
-  const theme = localStorage.getItem('widFeed@theme') as Theme | null;
+  const { theme, handleChangeTheme } = useTheme();
 
   const [isDarkMode, setIsDarkMode] = useState(theme === 'dark');
 
-  const handleChangeTheme = () => {
-    if (!theme) return undefined;
+  const handleChangeSwitch = () => {
+    handleChangeTheme();
 
-    if (theme === 'light') {
-      document.documentElement.classList.remove(theme);
-      document.documentElement.classList.add('dark');
-
-      localStorage.setItem('widFeed@theme', 'dark');
-      setIsDarkMode(true);
-    } else {
-      document.documentElement.classList.remove(theme);
-      document.documentElement.classList.add('light');
-
-      localStorage.setItem('widFeed@theme', 'light');
-      setIsDarkMode(false);
-    }
+    setIsDarkMode(!isDarkMode);
   };
 
   return (
     <div className={className}>
       <Switch
         checked={isDarkMode}
-        onChange={handleChangeTheme}
+        onChange={handleChangeSwitch}
         className={`${isDarkMode ? 'bg-stroke-dark' : 'bg-stroke-light'}
           relative inline-flex h-[38px] w-[74px] shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-100 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-brand-500 focus-visible:ring-opacity-75`}
       >
