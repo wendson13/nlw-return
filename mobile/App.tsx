@@ -20,7 +20,6 @@ export default function App() {
 
   SplashScreen.hideAsync();
 
-  console.log(process.env.S3_BUCKET);
   return (
     <View
       style={{
