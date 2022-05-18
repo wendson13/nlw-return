@@ -9,7 +9,7 @@ type SelectStepProps = {
 export function SelectSteps ({ contentOptions, onChangeCurrentOption }: SelectStepProps) {
   return (
     <>
-      <header className="flex items-center text-xl leading-6 text-zinc-100 font-medium">
+      <header className="flex items-center text-xl leading-6 text-primary-light font-medium dark:text-primary-dark">
         <span>let your feedback</span>
         <CloseButton />
       </header>
@@ -18,7 +18,7 @@ export function SelectSteps ({ contentOptions, onChangeCurrentOption }: SelectSt
         {
           Object.entries(contentOptions).map(([key, option]) => (
             <button
-              className="w-full h-28 flex flex-col justify-center items-center gap-2 rounded-lg text-sm font-medium text-zinc-100 bg-zinc-800 border-2 outline-none border-transparent hover:border-brand-500 focus:border-brand-500 sm:w-24"
+              className="w-full h-28 flex flex-col justify-center items-center gap-2 rounded-lg text-sm font-medium text-primary-light bg-surface-secondary-light border-2 outline-none border-transparent hover:border-brand-500 focus:border-brand-500 sm:w-24 dark:text-primary-dark dark:bg-surface-secondary-dark"
               onClick={() => onChangeCurrentOption(key as ContentOptionsKeyType)}
               key={key}
             >

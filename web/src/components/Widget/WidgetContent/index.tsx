@@ -32,7 +32,7 @@ export const ContentOptions = {
 export type ContentOptionsType = typeof ContentOptions;
 export type ContentOptionsKeyType = keyof typeof ContentOptions;
 
-export function WidgetContent () {
+export function WidgetContent() {
   const [currentStep, setCurrentStep] = useState<ContentOptionsKeyType | null>(null);
   const [isSendFeedback, setIsSendFeedback] = useState(false);
 
@@ -46,31 +46,30 @@ export function WidgetContent () {
   };
 
   return (
-    <div className="relative flex flex-col gap-8 items-center p-4 rounded-2xl bg-zinc-900 shadow-lg w-[calc(100vw-2rem)] mb-4 sm:w-auto">
+    <div className="relative flex flex-col gap-8 items-center p-4 rounded-2xl bg-surface-primary-light shadow-lg w-[calc(100vw-2rem)] mb-4 sm:w-auto dark:bg-surface-primary-dark">
       <>
         {
           !currentStep
 
             ? (
-                <SelectSteps
-                  contentOptions={ContentOptions}
-                  onChangeCurrentOption={setCurrentStep}
-                />
-              )
+              <SelectSteps
+                contentOptions={ContentOptions}
+                onChangeCurrentOption={setCurrentStep}
+              />)
 
             : isSendFeedback
               ? <SuccessStep onSendNewFeedback={handleResetFeedbackStep} />
 
               : <Steps
-                  currentStep={currentStep}
-                  onToBack={handleBackSelectSteps}
-                  onSendFeedback={setIsSendFeedback}
-                />
+                currentStep={currentStep}
+                onToBack={handleBackSelectSteps}
+                onSendFeedback={setIsSendFeedback}
+              />
         }
       </>
 
       <footer>
-        <span className="flex gap-1 text-zinc-400">
+        <span className="flex gap-1 text-secondary-light dark:text-secondary-dark">
           made with 🖤 by
           <a
             className="underline underline-offset-2 rounded outline-none border-2 border-transparent focus:border-brand-500"

@@ -37,9 +37,9 @@ export function Steps({ currentStep, onToBack, onSendFeedback }: StepProps) {
 
   return (
     <>
-      <header className="flex items-center text-xl leading-6 text-zinc-100 font-medium">
+      <header className="flex items-center text-xl leading-6 text-primary-light font-medium dark:text-primary-dark">
         <button
-          className="absolute top-4 left-4 text-zinc-500  hover:text-zinc-100 outline-none border-2 border-transparent rounded focus:border-brand-500" title="go back feedback selecting"
+          className="absolute top-4 left-4 text-secondary-light  hover:text-primary-light outline-none border-2 border-transparent rounded focus:border-brand-500 dark:text-secondary-dark dark:hover:text-primary-dark" title="go back feedback selecting"
           onClick={onToBack}
         >
           <ArrowLeft weight="bold" className="w-6 h-6" />
@@ -55,7 +55,7 @@ export function Steps({ currentStep, onToBack, onSendFeedback }: StepProps) {
 
       <form onSubmit={handleSubmitFeedback} className="flex flex-col gap-2">
         <textarea
-          className="px-3 py-2 rounded resize-none border-2 border-zinc-600 text-zinc-100 bg-transparent outline-none focus:border-brand-500 scrollbar-thumb-zinc-700 scrollbar-track-transparent scrollbar-thin"
+          className="px-3 py-2 rounded resize-none border-2 border-stroke-light text-primary-light bg-transparent outline-none focus:border-brand-500 scrollbar-thumb-stroke-light scrollbar-track-transparent scrollbar-thin dark:text-primary-dark dark:border-stroke-dark dark:scrollbar-thumb-stroke-dark"
           placeholder="Is somethings not working right? We want to correct. Tell us in detail what happening"
           value={feedback}
           onChange={e => setFeedback(e.target.value)}
@@ -73,7 +73,7 @@ export function Steps({ currentStep, onToBack, onSendFeedback }: StepProps) {
             />
           }
           <button
-            className="w-full flex justify-center py-2 rounded text-sm leading-6 text-white font-medium bg-brand-500 transition-colors outline-none disabled:opacity-40 hover:bg-brand-300 disabled:hover:bg-brand-500 ring-brand-500 ring-offset-zinc-900 ring-offset-2 focus:ring-2"
+            className="w-full flex justify-center py-2 rounded text-sm leading-6 text-white font-medium bg-brand-500 transition-colors outline-none disabled:opacity-40 hover:bg-brand-300 disabled:hover:bg-brand-500 ring-brand-500 ring-offset-surface-primary-light ring-offset-2 focus:ring-2 dark:ring-offset-surface-primary-dark"
             disabled={feedback.trim().length === 0}
             type="submit">
             {isSubmittingFeedback ? <Loading /> : 'Send feedback'}

@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 * {
-  @apply font-sans
+  @apply font-sans;
 }
 
 body {
-  @apply bg-zinc-800 outline-none focus:border-brand-500
+  @apply bg-surface-secondary-light dark:bg-surface-secondary-dark outline-none focus:border-brand-500;
 }
