@@ -21,7 +21,7 @@ export const ThemeContextProvider = (props: ThemeContextProviderProps) => {
     const userPrefersTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 
     document.documentElement.classList.add(userPrefersTheme);
-    localStorage.setItem('widFeed@theme', userPrefersTheme);
+    localStorage.setItem('feedGet@theme', userPrefersTheme);
     setTheme(userPrefersTheme);
   };
 
@@ -32,13 +32,13 @@ export const ThemeContextProvider = (props: ThemeContextProviderProps) => {
       document.documentElement.classList.remove(theme);
       document.documentElement.classList.add('dark');
 
-      localStorage.setItem('widFeed@theme', 'dark');
+      localStorage.setItem('feedGet@theme', 'dark');
       setTheme('dark');
     } else {
       document.documentElement.classList.remove(theme);
       document.documentElement.classList.add('light');
 
-      localStorage.setItem('widFeed@theme', 'light');
+      localStorage.setItem('feedGet@theme', 'light');
       setTheme('light');
     }
   };
